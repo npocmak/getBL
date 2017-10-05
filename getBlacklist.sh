@@ -218,7 +218,7 @@ $BIN_AWK -v var="$TIMESTAMP" '/[0-9a-zA-Z\.\-]+\.[a-z]{2,10}/ { print $1 ",Malwa
 
 # Collect all feeds to one csv per type of feeds
 # TIMESTAMP=$( funGetTimestamp )
-echo "Collecting tables to lookup folder ($TIMESTAMP)."
+echo "Collecting tables to blacklist folder ($TIMESTAMP)."
 echo "ip,description" > $PATH_BLACKLISTS/$FILE_IP_BLACKLIST
 $BIN_FIND $PATH_LIST -type f -name "ip_*" | \
 while read TABLE
@@ -239,8 +239,6 @@ while read TABLE
 do
   $BIN_GREP -v "url,description" $TABLE >> $PATH_BLACKLISTS/$FILE_URL_BLACKLIST
 done
-
-echo "Uploading tables to sec-tables folder on jas3.eu ($TIMESTAMP)."
 
 # TIMESTAMP=$( funGetTimestamp )
 echo "End ($TIMESTAMP)."

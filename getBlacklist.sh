@@ -153,6 +153,72 @@ echo "ip,description" > $PATH_LIST/ip_malc0de_blacklist.csv
 echo "Processing Malc0de - Malc0de Blacklist ($TIMESTAMP)."
 $BIN_AWK -v var="$TIMESTAMP" '/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/ { print $1 ",Malc0de Blacklist (Malicious IP) (" var ")" }' $PATH_DATE/ip_malc0de_blacklist.txt >> $PATH_LIST/ip_malc0de_blacklist.csv
 
+echo "Get IP Blacklist from Talos Reputation Center."
+$BIN_WGET -q https://www.talosintelligence.com/documents/ip-blacklist -O $PATH_DATE/ip_talos_blacklist.txt --no-check-certificate
+echo "ip,description" > $PATH_LIST/ip_talos_blacklist.csv
+echo "Processing Talos Feeds - IP Blacklist ($TIMESTAMP)."
+$BIN_AWK -v var="$TIMESTAMP" '/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/ { print $1 ",Cisco IP Talos Blacklist (Malicious IP flagged on all Cisco Security Products) (" var ")" }' $PATH_DATE/ip_talos_blacklist.txt >> $PATH_LIST/ip_talos_blacklist.csv
+
+echo "Get IP Blacklist from Blocklist.de - All attacked IP addresses (last 48 hours)."
+$BIN_WGET -q https://lists.blocklist.de/lists/all.txt -O $PATH_DATE/ip_blocklist_all.txt --no-check-certificate
+echo "ip,description" > $PATH_LIST/ip_blocklist_all.csv
+echo "Processing Blocklist.de (All) - IP Blacklist"
+$BIN_AWK -v var="$TIMESTAMP" '/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/ { print $1 ",Blocklist.de IP Blacklist (All attacked IP addresses) (" var ")" }' $PATH_DATE/ip_blocklist_all.txt >> $PATH_LIST/ip_blocklist_all.csv
+
+echo "Get IP Blacklist from Blocklist.de - Attacks on the service SSH (last 48 hours)."
+$BIN_WGET -q https://lists.blocklist.de/lists/ssh.txt -O $PATH_DATE/ip_blocklist_ssh.txt --no-check-certificate
+echo "ip,description" > $PATH_LIST/ip_blocklist_ssh.csv
+echo "Processing Blocklist.de (SSH) - IP Blacklist"
+$BIN_AWK -v var="$TIMESTAMP" '/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/ { print $1 ",Blocklist.de IP Blacklist (Attacks on the service SSH) (" var ")" }' $PATH_DATE/ip_blocklist_ssh.txt >> $PATH_LIST/ip_blocklist_ssh.csv
+
+echo "Get IP Blacklist from Blocklist.de - Attacks on the service Mail, Postfix (last 48 hours)."
+$BIN_WGET -q https://lists.blocklist.de/lists/mail.txt -O $PATH_DATE/ip_blocklist_mail.txt --no-check-certificate
+echo "ip,description" > $PATH_LIST/ip_blocklist_mail.csv
+echo "Processing Blocklist.de (Attacks on the service Mail, Postfix) - IP Blacklist"
+$BIN_AWK -v var="$TIMESTAMP" '/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/ { print $1 ",Blocklist.de IP Blacklist (Attacks on the service Mail, Postfix) (" var ")" }' $PATH_DATE/ip_blocklist_mail.txt >> $PATH_LIST/ip_blocklist_mail.csv
+
+echo "Get IP Blacklist from Blocklist.de - Attacks on the service Apache, Apache-DDOS, RFI-Attacks (last 48 hours)."
+$BIN_WGET -q https://lists.blocklist.de/lists/apache.txt -O $PATH_DATE/ip_blocklist_apache.txt --no-check-certificate
+echo "ip,description" > $PATH_LIST/ip_blocklist_apache.csv
+echo "Processing Blocklist.de (Attacks on the service Apache, Apache-DDOS, RFI-Attacks) - IP Blacklist"
+$BIN_AWK -v var="$TIMESTAMP" '/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/ { print $1 ",Blocklist.de IP Blacklist (Attacks on the service Apache, Apache-DDOS, RFI-Attacks) (" var ")" }' $PATH_DATE/ip_blocklist_apache.txt >> $PATH_LIST/ip_blocklist_apache.csv
+
+echo "Get IP Blacklist from Blocklist.de - Attacks on the Service imap, sasl, pop3 (last 48 hours)."
+$BIN_WGET -q https://lists.blocklist.de/lists/imap.txt -O $PATH_DATE/ip_blocklist_imap.txt --no-check-certificate
+echo "ip,description" > $PATH_LIST/ip_blocklist_imap.csv
+echo "Processing Blocklist.de (Attacks on the Service imap, sasl, pop3) - IP Blacklist"
+$BIN_AWK -v var="$TIMESTAMP" '/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/ { print $1 ",Blocklist.de IP Blacklist (Attacks on the Service imap, sasl, pop3) (" var ")" }' $PATH_DATE/ip_blocklist_imap.txt >> $PATH_LIST/ip_blocklist_imap.csv
+
+echo "Get IP Blacklist from Blocklist.de - Attacks on the Service FTP (last 48 hours)."
+$BIN_WGET -q https://lists.blocklist.de/lists/ftp.txt -O $PATH_DATE/ip_blocklist_ftp.txt --no-check-certificate
+echo "ip,description" > $PATH_LIST/ip_blocklist_ftp.csv
+echo "Processing Blocklist.de (Attacks on the Service FTP) - IP Blacklist"
+$BIN_AWK -v var="$TIMESTAMP" '/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/ { print $1 ",Blocklist.de IP Blacklist (Attacks on the Service FTP) (" var ")" }' $PATH_DATE/ip_blocklist_ftp.txt >> $PATH_LIST/ip_blocklist_ftp.csv
+
+echo "Get IP Blacklist from Blocklist.de - All IP addresses that tried to login in a SIP-, VOIP- or Asterisk-Server (last 48 hours)."
+$BIN_WGET -q https://lists.blocklist.de/lists/sip.txt -O $PATH_DATE/ip_blocklist_sip.txt --no-check-certificate
+echo "ip,description" > $PATH_LIST/ip_blocklist_sip.csv
+echo "Processing Blocklist.de (SIP) - IP Blacklist"
+$BIN_AWK -v var="$TIMESTAMP" '/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/ { print $1 ",Blocklist.de IP Blacklist (All IP addresses that tried to login in a SIP-, VOIP- or Asterisk-Server) (" var ")" }' $PATH_DATE/ip_blocklist_sip.txt >> $PATH_LIST/ip_blocklist_sip.csv
+
+echo "Get IP Blacklist from Blocklist.de - Attacks attacks on the RFI-Attacks, REG-Bots, IRC-Bots or BadBots (last 48 hours)."
+$BIN_WGET -q https://lists.blocklist.de/lists/bots.txt -O $PATH_DATE/ip_blocklist_bots.txt --no-check-certificate
+echo "ip,description" > $PATH_LIST/ip_blocklist_bots.csv
+echo "Processing Blocklist.de (BOTs) - IP Blacklist"
+$BIN_AWK -v var="$TIMESTAMP" '/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/ { print $1 ",Blocklist.de IP Blacklist (Attacks attacks on the RFI-Attacks, REG-Bots, IRC-Bots or BadBots) (" var ")" }' $PATH_DATE/ip_blocklist_bots.txt >> $PATH_LIST/ip_blocklist_bots.csv
+
+echo "Get IP Blacklist from Blocklist.de - All IPs which are older then 2 month and have more then 5.000 attacks."
+$BIN_WGET -q https://lists.blocklist.de/lists/strongips.txt -O $PATH_DATE/ip_blocklist_strongips.txt --no-check-certificate
+echo "ip,description" > $PATH_LIST/ip_blocklist_strongips.csv
+echo "Processing Blocklist.de (STRONG IPs) - IP Blacklist"
+$BIN_AWK -v var="$TIMESTAMP" '/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/ { print $1 ",Blocklist.de IP Blacklist (All IPs which are older then 2 month and have more then 5.000 attacks) (" var ")" }' $PATH_DATE/ip_blocklist_strongips.txt >> $PATH_LIST/ip_blocklist_strongips.csv
+
+echo "Get IP Blacklist from Blocklist.de - All IPs which attacks Joomlas, Wordpress and other Web-Logins with Brute-Force Loginss (last 48 hours)."
+$BIN_WGET -q https://lists.blocklist.de/lists/bruteforcelogin.txt -O $PATH_DATE/ip_blocklist_bruteforcelogin.txt --no-check-certificate
+echo "ip,description" > $PATH_LIST/ip_blocklist_bruteforcelogin.csv
+echo "Processing Blocklist.de (BRUTE FORCE LOGIN) - IP Blacklist"
+$BIN_AWK -v var="$TIMESTAMP" '/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/ { print $1 ",Blocklist.de IP Blacklist (All IPs which attacks Joomlas, Wordpress and other Web-Logins with Brute-Force Logins) (" var ")" }' $PATH_DATE/ip_blocklist_bruteforcelogin.txt >> $PATH_LIST/ip_blocklist_bruteforcelogin.csv
+
 echo "Get Ransomware Tracker - Ransomware IP Blacklist."
 # TIMESTAMP=$( funGetTimestamp )
 $BIN_WGET -q https://ransomwaretracker.abuse.ch/downloads/RW_IPBL.txt -O $PATH_DATE/ip_ransomtracker_blacklist.txt --no-check-certificate

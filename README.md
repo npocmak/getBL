@@ -65,6 +65,6 @@ List of sources:
 30. **Blocklist.de - Attacks attacks on the RFI-Attacks, REG-Bots, IRC-Bots or BadBots**
 https://lists.blocklist.de/lists/bots.txt
 31. **Blocklist.de - All IPs which are older then 2 month and have more then 5.000 attacks**
-https://lists.blocklist.de/lists/strongips.txt
+* https://lists.blocklist.de/lists/strongips.txt
 32. **All IPs which attacks Joomlas, Wordpress and other Web-Logins with Brute-Force Loginss**
-https://lists.blocklist.de/lists/bruteforcelogin.txt
+* https://lists.blocklist.de/lists/bruteforcelogin.txt

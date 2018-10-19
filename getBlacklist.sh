@@ -1,9 +1,9 @@
 #!/bin/bash
 # ########################################################
 #  Name:        getBlacklist.sh
-#  Version:     1.0
-#  Author:      Pavol Kluka
-#  Date:        2017/09/09
+#  Version:     1.1
+#  Author:      Mad | Pavol Kluka - 2017/09/09
+#  Date:        2018/10/19
 #  Platforms:   Linux
 # ########################################################
 
@@ -116,13 +116,6 @@ $BIN_WGET -q http://rules.emergingthreats.net/blockrules/compromised-ips.txt -O 
 echo "ip,description" > $PATH_LIST/ip_compromised_blacklist.csv
 echo "Processing Emerging Threats - Known hostile or compromised hosts ($TIMESTAMP)."
 $BIN_AWK -v var="$TIMESTAMP" '/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/ { print $1 ",Compromised Host (" var ")" }' $PATH_DATE/ip_compromised_blocklist.txt >> $PATH_LIST/ip_compromised_blacklist.csv
-
-echo "Get Binary Defense Systems Artillery Threat Intelligence Feed and Banlist Feed."
-# TIMESTAMP=$( funGetTimestamp )
-$BIN_WGET -q http://www.binarydefense.com/banlist.txt -O $PATH_DATE/ip_binary_blocklist.txt --no-check-certificate
-echo "ip,description" > $PATH_LIST/ip_binary_blacklist.csv
-echo "Processing Binary Defense Systems Artillery Threat Intelligence Feed and Banlist Feed ($TIMESTAMP)."
-$BIN_AWK -v var="$TIMESTAMP" '/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/ { print $1 ",Binary Defense Systems Artillery Threat Intelligence (" var ")" }' $PATH_DATE/ip_binary_blocklist.txt >> $PATH_LIST/ip_binary_blacklist.csv
 
 echo "Get AlienVault - IP Reputation Database."
 # TIMESTAMP=$( funGetTimestamp )

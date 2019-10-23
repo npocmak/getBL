@@ -62,7 +62,7 @@ List of sources:
 * https://lists.blocklist.de/lists/ftp.txt
 29. **Blocklist.de - All IP addresses that tried to login in a SIP-, VOIP- or Asterisk-Server**
 * https://lists.blocklist.de/lists/sip.txt
-30. **Blocklist.de - Attacks attacks on the RFI-Attacks, REG-Bots, IRC-Bots or BadBots**
+30. **Blocklist.de - Attacks attacks on the RFI-Attacks, REG-Bots, IRC-Bots or BadBots** 
 https://lists.blocklist.de/lists/bots.txt
 31. **Blocklist.de - All IPs which are older then 2 month and have more then 5.000 attacks**
 * https://lists.blocklist.de/lists/strongips.txt
